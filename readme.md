@@ -1,6 +1,7 @@
 # Eureka start guide:
-## Set up Server: /eureka
-1. Add Config Client and Eureka Server on spring initializr
+# Eureka Server: eureka
+## Set up Server: 
+1. Add dependencies: Config Client and Eureka Server on spring initializr
 2. set application.properties:
    - set application name
    - set default port 8761
@@ -37,7 +38,7 @@
 
 - Step 2: Use a web browser to view the Eureka web console to ensure your microservice is registered.
   - after modification, access: http://localhost:8761/
-  - an instance: DOG-MICROSERVICE appeared
+  - an instance: DOG-MICROSERVICE appeared, which means new dog-service shown as registered with the Eureka server.
 
 # Question：
 1. what dependencies management do?

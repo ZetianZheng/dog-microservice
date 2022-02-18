@@ -1,17 +1,19 @@
 # Eureka start guide:
-# Eureka Server: eureka
+![img.png](img.png)
+![img_1.png](img_1.png)
+# Eureka Server: eureka(registry)
 ## Set up Server: 
 1. Add dependencies: Config Client and Eureka Server on spring initializr
-2. set application.properties:
+2. set[application.properties](./eureka/src/main/resources/application.properties):
    - set application name
    - set default port 8761
    - indicate that this is a server rather than client
    - set log level to see additional info
-     - now use: {TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF} instead ON as the value
-3. EurekaApplication: add annotation to notify that is a eureka server
+     - now use: {TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF} instead of ON as the value
+3. [EurekaApplication](./eureka/src/main/java/com/udacity/eureka/EurekaApplication.java): add annotation to notify that is a eureka server
 4. http://localhost:8761/ to see eureka page
 
-# Eureka Client service: dog micro service:
+# Eureka Client service: dog microservice:
 ##  how does Spring Data Rest work?
 1. At application startup, Spring Data Rest finds all of the **spring data repositories**
 2. Then, Spring Data Rest **creates an endpoint** that matches the entity name
@@ -20,9 +22,9 @@
    
     
 ## spring data rest client
-1. create entity: Dog.java @Entity, @Id (auto generation strategy)
-2. Create a repository that extends CrudRepository.
-3. application.properities: 
+1. create entity: [Dog.java](./dogMicroservice/src/main/java/com/udacity/dogMicroservice/entity/Dog.java) @Entity, @Id (auto generation strategy)
+2. Create a repository that extends CrudRepository.[DogRepository.java](./dogMicroservice/src/main/java/com/udacity/dogMicroservice/repository/DogRepository.java)
+3. application.properties: [application.properties](./dogMicroservice/src/main/resources/application.properties)
   - H2 settings
   - spring.jpa.defer-datasource-initialization let hibernate create the table for us from data.sql
 4. there is no controller layer, no need to address controller annotation
@@ -31,9 +33,9 @@
 
 ## Registration
 - Step 1: Turn the microservice into a Eureka client by adding the appropriate annotations and dependencies in the Maven POM file.
-  1. pom:
+  1. [pom](./dogMicroservice/pom.xml):
     - add eureka client, cloud config, dependencies management
-  2. DogMicroserviceApplication:
+  2. [DogMicroserviceApplication](./dogMicroservice/src/main/java/com/udacity/dogMicroservice/DogMicroserviceApplication.java):
     - add annotation: @EnableEurekaClient to notify spring that it is a eureka client
 
 - Step 2: Use a web browser to view the Eureka web console to ensure your microservice is registered.

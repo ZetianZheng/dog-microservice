@@ -45,5 +45,30 @@
 # Question：
 1. what dependencies management do?
 2. what:eureka.client.serviceUrl.defaultZone mean? why need two lines of this?
-3. what eureka.instance.prefer-ip-address mean?
+   - what is that mean:
+        - In the preceding example, "defaultZone" is a magic string fallback value that provides the service URL for any client that does not express a preference (in other words, it is a useful default).
+   - do we need two lines?
+    - Actually there is no difference between two default zones.   
+        It is just that we can define the default zones in two such ways.   
+        You can remove any one of the zones and try to run the application, it will work.
+    
 
+3. what eureka.instance.prefer-ip-address mean?
+    - In some cases, it is preferable for Eureka to advertise the IP addresses of services rather than the hostname.
+    - . Set eureka.instance.preferIpAddress to true and, when the application registers with eureka, it uses its IP address rather than its hostname.
+
+4. difference between CrudRepository and @Repository?
+    - @Repository: 
+        - The inclusion of this annotation is necessary since it will allow the DogRepository to be included in the Application Context/Spring Container and thus be used throughout the application.
+    - CrudRepository:
+        - the CrudRepository interface already provides us with methods that perform CRUD operations and that we can use them as they are:
+            1. save
+            2. findById 
+            3. findAll 
+            4.saveAll
+            5. delete 
+            6. deleteById 
+            7. deleteAll
+        -  we have to follow this structure because it is the way Spring Data gives us to perform CRUD operations, which is similar to the structure MyBatis gives us to perform CRUD operations.
+5. eureka.instance.prefer-ip-address=true?
+    - Set eureka.instance.preferIpAddress to true and, when the application registers with eureka, it uses its IP address rather than its hostname.

@@ -9,5 +9,7 @@ import org.springframework.data.repository.CrudRepository;
  * Depending on your implementation, this can be re-used from either the REST API or GraphQL API.
  * In this case, we don't need to add anything within the interface here.
  */
+
+@Repository
 public interface DogRepository extends CrudRepository<Dog, Long> {
 }
